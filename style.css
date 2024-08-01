@@ -162,6 +162,21 @@ button {
     margin-top: 10px;
 }
 
+.info {
+    animation: info-animation 1.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes info-animation {
+    0% { transform: scale(1); background-color: #ffffff; color: #5cabeb; }
+    25% { transform: scale(1.1); background-color: #5cabeb; color: #ffffff; }
+    50% { transform: scale(1); background-color: #ffffff; color: #5cabeb; }
+    75% { transform: scale(1.1); background-color: #5cabeb; color: #ffffff; }
+    100% { transform: scale(1); background-color: #ffffff; color: #5cabeb; }
+}
+
 @keyframes success-animation {
     0% { transform: scale(1); background-color: #ffffff; color: #4caf50; }
     25% { transform: scale(1.1); background-color: #4caf50; color: #ffffff; }

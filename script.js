@@ -28,27 +28,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Function to handle submit button click
     function handleSubmit() {
-        if (userInput === generatedPassword) {
+        if (!generatedPassword) {
+            resultMessage.innerHTML = '<i class="fas fa-info-circle icon"></i> First Generate a number and then Click on keypad.';
+            resultMessage.style.color = '#5cabeb';
+            resultMessage.classList.add('info');
+            resultMessage.classList.remove('success', 'error');
+        } else if (!userInput) {
+            resultMessage.innerHTML = '<i class="fas fa-info-circle icon"></i> Please enter a number.';
+            resultMessage.style.color = '#5cabeb';
+            resultMessage.classList.add('info');
+            resultMessage.classList.remove('success', 'error');
+        } else if (userInput === generatedPassword) {
             resultMessage.innerHTML = '<i class="fas fa-check-circle icon"></i> Success! Password matched.';
             resultMessage.style.color = 'green';
             resultMessage.classList.add('success');
-            resultMessage.classList.remove('error');
+            resultMessage.classList.remove('error', 'info');
         } else {
             resultMessage.innerHTML = '<i class="fas fa-times-circle icon"></i> Error! Password did not match.';
             resultMessage.style.color = 'red';
             resultMessage.classList.add('error');
-            resultMessage.classList.remove('success');
+            resultMessage.classList.remove('success', 'info');
         }
         // Remove the animation classes after the animation ends to reset for the next animation
         resultMessage.addEventListener('animationend', () => {
-            resultMessage.classList.remove('success', 'error');
+            resultMessage.classList.remove('success', 'error', 'info');
         }, { once: true });
     }
+    
 
     // Function to clear input
     function handleClear() {
         userInput = '';
         display.textContent = userInput;
+        resultMessage.textContent = '';  // Clear the previous message
     }
 
     // Function to handle backspace
