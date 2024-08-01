@@ -3,9 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const generatedPasswordDisplay = document.getElementById('generated-password');
     const display = document.getElementById('display');
     const keypad = document.getElementById('keypad');
-    const submitBtn = document.getElementById('submit-btn');
-    const clearBtn = document.getElementById('clear-btn');
-    const backspaceBtn = document.getElementById('backspace-btn');
     const resultMessage = document.getElementById('result-message');
 
     let generatedPassword = '';
@@ -56,29 +53,22 @@ document.addEventListener('DOMContentLoaded', () => {
     generateBtn.addEventListener('click', generatePassword);
 
     // Add keypad buttons
-    const buttonLabels = ['1', '2', '3', '4', '5', '6', '7', '8'];
+    const buttonLabels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'X', 'Submit', 'Clear'];
     buttonLabels.forEach(label => {
         const btn = document.createElement('button');
         btn.textContent = label;
-        btn.addEventListener('click', handleKeypadClick);
+        if (label === 'Submit') {
+            btn.id = 'submit-btn';
+            btn.addEventListener('click', handleSubmit);
+        } else if (label === 'Clear') {
+            btn.id = 'clear-btn';
+            btn.addEventListener('click', handleClear);
+        } else if (label === 'X') {
+            btn.id = 'backspace-btn';
+            btn.addEventListener('click', handleBackspace);
+        } else {
+            btn.addEventListener('click', handleKeypadClick);
+        }
         keypad.appendChild(btn);
     });
-
-    // Add 9 and 0 buttons with center alignment
-    const nineBtn = document.createElement('button');
-    nineBtn.textContent = '9';
-    nineBtn.style.gridColumn = '2 / 3';
-    nineBtn.addEventListener('click', handleKeypadClick);
-    keypad.appendChild(nineBtn);
-
-    const zeroBtn = document.createElement('button');
-    zeroBtn.textContent = '0';
-    zeroBtn.style.gridColumn = '3 / 4';
-    zeroBtn.addEventListener('click', handleKeypadClick);
-    keypad.appendChild(zeroBtn);
-
-    // Handle submit, clear, and backspace
-    submitBtn.addEventListener('click', handleSubmit);
-    clearBtn.addEventListener('click', handleClear);
-    backspaceBtn.addEventListener('click', handleBackspace);
 });
