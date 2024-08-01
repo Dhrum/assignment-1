@@ -29,12 +29,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Function to handle submit button click
     function handleSubmit() {
         if (userInput === generatedPassword) {
-            resultMessage.textContent = 'Success! Password matched.';
+            resultMessage.innerHTML = '<i class="fas fa-check-circle icon"></i> Success! Password matched.';
             resultMessage.style.color = 'green';
+            resultMessage.classList.add('success');
+            resultMessage.classList.remove('error');
         } else {
-            resultMessage.textContent = 'Error! Password did not match.';
+            resultMessage.innerHTML = '<i class="fas fa-times-circle icon"></i> Error! Password did not match.';
             resultMessage.style.color = 'red';
+            resultMessage.classList.add('error');
+            resultMessage.classList.remove('success');
         }
+        // Remove the animation classes after the animation ends to reset for the next animation
+        resultMessage.addEventListener('animationend', () => {
+            resultMessage.classList.remove('success', 'error');
+        }, { once: true });
     }
 
     // Function to clear input

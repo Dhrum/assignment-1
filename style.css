@@ -149,6 +149,40 @@ button {
     margin-top: 10px;
 }
 
+@keyframes success-animation {
+    0% { transform: scale(1); background-color: #ffffff; color: #4caf50; }
+    25% { transform: scale(1.1); background-color: #4caf50; color: #ffffff; }
+    50% { transform: scale(1); background-color: #ffffff; color: #4caf50; }
+    75% { transform: scale(1.1); background-color: #4caf50; color: #ffffff; }
+    100% { transform: scale(1); background-color: #ffffff; color: #4caf50; }
+}
+
+@keyframes error-animation {
+    0% { transform: scale(1); background-color: #ffffff; color: #f44336; }
+    25% { transform: scale(1.1); background-color: #f44336; color: #ffffff; }
+    50% { transform: scale(1); background-color: #ffffff; color: #f44336; }
+    75% { transform: scale(1.1); background-color: #f44336; color: #ffffff; }
+    100% { transform: scale(1); background-color: #ffffff; color: #f44336; }
+}
+
+.success {
+    animation: success-animation 1.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error {
+    animation: error-animation 1.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    margin-right: 10px;
+}
+
 /* Responsive keypad */
 @media (max-width: 768px) {
     #keypad {
