@@ -11,15 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let generatedPassword = '';
     let userInput = '';
 
-   // Function to generate a six-digit password
-function generatePassword() {
-    generatedPassword = Math.floor(100000 + Math.random() * 900000).toString();
-    console.log("Generated Password: ", generatedPassword); // Debugging line
-    generatedPasswordDisplay.textContent = generatedPassword;
-    resultMessage.textContent = '';
-    userInput = '';
-    display.textContent = userInput;
-}
+    // Function to generate a six-digit password
+    function generatePassword() {
+        generatedPassword = Math.floor(100000 + Math.random() * 900000).toString();
+        console.log("Generated Password: ", generatedPassword); // Debugging line
+        generatedPasswordDisplay.textContent = generatedPassword;
+        resultMessage.textContent = '';
+        userInput = '';
+        display.textContent = userInput;
+    }
+
     // Function to handle keypad button clicks
     function handleKeypadClick(event) {
         if (userInput.length < 6) {
@@ -55,14 +56,24 @@ function generatePassword() {
     generateBtn.addEventListener('click', generatePassword);
 
     // Add keypad buttons
-    for (let i = 1; i <= 9; i++) {
+    const buttonLabels = ['1', '2', '3', '4', '5', '6', '7', '8'];
+    buttonLabels.forEach(label => {
         const btn = document.createElement('button');
-        btn.textContent = i;
+        btn.textContent = label;
         btn.addEventListener('click', handleKeypadClick);
         keypad.appendChild(btn);
-    }
+    });
+
+    // Add 9 and 0 buttons with center alignment
+    const nineBtn = document.createElement('button');
+    nineBtn.textContent = '9';
+    nineBtn.style.gridColumn = '2 / 3';
+    nineBtn.addEventListener('click', handleKeypadClick);
+    keypad.appendChild(nineBtn);
+
     const zeroBtn = document.createElement('button');
     zeroBtn.textContent = '0';
+    zeroBtn.style.gridColumn = '3 / 4';
     zeroBtn.addEventListener('click', handleKeypadClick);
     keypad.appendChild(zeroBtn);
 
