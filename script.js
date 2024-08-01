@@ -65,6 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', handleClear);
         } else if (label === 'X') {
             btn.id = 'backspace-btn';
+            const icon = document.createElement('span');
+            icon.innerHTML = '&#x232B;'; // Backspace icon
+            btn.textContent = '';
+            btn.appendChild(icon);
             btn.addEventListener('click', handleBackspace);
         } else {
             btn.addEventListener('click', handleKeypadClick);

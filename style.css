@@ -98,6 +98,7 @@ button {
     border-radius: 5px;
 }
 
+/* Keypad layout */
 #keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -113,9 +114,32 @@ button {
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-#keypad button:hover {
-    background-color: #e0f2f1; /* Light cyan on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Specific button styles */
+#keypad button#submit-btn {
+    background-color: #2196f3; /* Blue */
+    color: white;
+}
+
+#keypad button#submit-btn:hover {
+    background-color: #1976d2; /* Darker blue */
+}
+
+#keypad button#clear-btn {
+    background-color: #f44336; /* Red */
+    color: white;
+}
+
+#keypad button#clear-btn:hover {
+    background-color: #c62828; /* Darker red */
+}
+
+#keypad button#backspace-btn {
+    background-color: #ff9800; /* Orange */
+    color: white;
+}
+
+#keypad button#backspace-btn:hover {
+    background-color: #f57c00; /* Darker orange */
 }
 
 #result-message {
